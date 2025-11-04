@@ -6,6 +6,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         pass
 
 def run():
+    import socketserver
+socketserver.TCPServer.allow_reuse_address = True
     with socketserver.TCPServer(("", PORT), Handler) as httpd:
         httpd.serve_forever()
 
